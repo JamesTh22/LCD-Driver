@@ -17,8 +17,19 @@
 #define LCD_D6   LATBbits.LATB6
 #define LCD_D7   LATBbits.LATB7
 
-
-static void ports_initialize_lcd(void) {
+static inline void ports_initialize_lcd(void) {
     ANSELB=0x00; TRISB=0X00; LATB=0x00;
 }
-
+ // function to send a nibble inline is just a hint to the compiler :) "this function is tiny"  
+ // clocks one 4-bit nibble onto D4–D7 and strobes E with safe timing
+static inline void send_lcd_4bit(unsigned char data) {
+    LCD_D4 = (data >> 0) & 0x01;
+    LCD_D5 = (data >> 1) & 0x01;
+    LCD_D6 = (data >> 2) & 0x01;
+    LCD_D7 = (data >> 3) & 0x01;
+    
+    LCD_E = 1;
+    __delay_us(1);      // E high >= 450 ns
+    LCD_E = 0;
+    __delay_us(40); 
+}
