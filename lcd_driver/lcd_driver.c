@@ -1,7 +1,7 @@
 #ifdef __XC8
 #include <xc.h>
-#include "lcd_opcodes.h"
 #include "lcd_pinmap.h"
+#include "lcd_opcodes.h"
 
 #pragma config FOSC = HSHP      // HS, high-power crystal (20 MHz)
 #pragma config PLLCFG = OFF     // No 4x PLL (20 MHz stays 20 MHz)
