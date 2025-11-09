@@ -35,7 +35,7 @@ static inline void lcd_write_to(unsigned char data) {
     send_lcd_4bit(data >> 4);
     send_lcd_4bit(data);
 }
-static inline void lcd_clear(void) {lcd_command(LCD_CMD_CLEAR)}
+static inline void lcd_clear(void) {lcd_command(LCD_OPCODE_CLEAR;)}
 
 static inline void lcd_initialize_power_up(void) {
     port_initialize_lcd(); __delay_ms(50);
