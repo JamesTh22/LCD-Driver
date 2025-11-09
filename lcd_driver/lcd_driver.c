@@ -28,7 +28,7 @@ static inline void lcd_command(unsigned char data) {
     LCD_RS = 0;
     send_lcd_4bit(data >> 4);
     send_lcd_4bit(data);
-    if (cmd == LCD_OPCODE_CLEAR || cmd == LCD_OPCODE_HOME) {__delay_ms(2);}
+    if (data == LCD_OPCODE_CLEAR || data == LCD_OPCODE_HOME) {__delay_ms(2);}
 }
 static inline void lcd_write_to(unsigned char data) {
     LCD_RS = 1;
