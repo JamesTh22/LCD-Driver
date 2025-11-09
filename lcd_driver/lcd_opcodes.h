@@ -32,5 +32,20 @@
 #define LCD_OPCODE_FONT_5x10         0x04
 #define LCD_OPCODE_FONT_5x8          0x00
 
+// API
+void port_initialize_lcd(void);
+void lcd_initialize_power_up(void);
+
+void lcd_command(unsigned char data);
+void lcd_write_to(unsigned char data);
+
+void lcd_clear(void);
+void lcd_display_on(void);
+void lcd_display_off(void);
+void lcd_cursor_on(void);
+void lcd_cursor_off(void);
+void lcd_blink_on(void);
+void lcd_blink_off(void);
+
 #endif
 

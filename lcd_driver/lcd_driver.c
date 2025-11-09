@@ -36,6 +36,12 @@ static inline void lcd_write_to(unsigned char data) {
     send_lcd_4bit(data);
 }
 static inline void lcd_clear(void) {lcd_command(LCD_OPCODE_CLEAR;)}
+static inline void lcd_display_on(void)  { lcd_command(LCD_OPCODE_DISPLAY_CTRL | LCD_OPCODE_DISPLAY_ON); }
+static inline void lcd_display_off(void) { lcd_command(LCD_OPCODE_DISPLAY_CTRL | LCD_OPCODE_DISPLAY_OFF); }
+static inline void lcd_cursor_on(void)   { lcd_command(LCD_OPCODE_DISPLAY_CTRL | LCD_OPCODE_DISPLAY_ON | LCD_OPCODE_CURSOR_ON); }
+static inline void lcd_cursor_off(void)  { lcd_command(LCD_OPCODE_DISPLAY_CTRL | LCD_OPCODE_DISPLAY_ON | LCD_OPCODE_CURSOR_OFF); }
+static inline void lcd_blink_on(void)    { lcd_command(LCD_OPCODE_DISPLAY_CTRL | LCD_OPCODE_DISPLAY_ON | LCD_OPCODE_BLINK_ON); }
+static inline void lcd_blink_off(void)   { lcd_command(LCD_OPCODE_DISPLAY_CTRL | LCD_OPCODE_DISPLAY_ON | LCD_OPCODE_BLINK_OFF); }
 
 static inline void lcd_initialize_power_up(void) {
     port_initialize_lcd(); __delay_ms(50);
