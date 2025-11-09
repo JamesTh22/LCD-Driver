@@ -1,3 +1,4 @@
+#ifdef __XC8
 #include <xc.h>
 #include <stdint.h>
 
@@ -32,4 +33,11 @@ static inline void send_lcd_4bit(unsigned char data) {
     __delay_us(1);      // E high >= 450 ns
     LCD_E = 0;
     __delay_us(40); 
+}
+
+static inline void lcd_command(unsigned char data) {
+    LCD_RS = 0;
+    send_lcd_4bit(data >> 4);
+    send_lcd_4bit(data);
+    if (data == 0x01 || data == 0x02) __delay_ms(2);
 }
